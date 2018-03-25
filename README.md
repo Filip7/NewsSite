@@ -6,8 +6,8 @@ Web stranica na temu news portal iz predmeta Programiranje web aplikacija na TVZ
 
 #### Bitni linkovi
 
-[Lms](lms.tvz.hr)  
-[Moj tvz](moj.tvz.hr)
+[Lms](https://lms.tvz.hr/)  
+[Moj tvz](https://moj.tvz.hr/)
 
 ## Konfiguracija XAMPP(lampp) na linux sustavima
 
