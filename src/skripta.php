@@ -9,7 +9,17 @@
     $kratkiSadrzaj = $_POST['kratkiSadrzaj'];
     $tekst = $_POST['tekst'];
     $vrstaVijesti = $_POST['vrstaVijesti'];
-    $SakrijVijest = (isset($_POST['sakrijVijest']) ? $_POST['sakrijVijest'] : null);;
+    $SakrijVijest = (isset($_POST['sakrijVijest']) ? $_POST['sakrijVijest'] : 0);
+
+    $picture = $_FILES['picture']['name'];
+    $target = '../res/'.$picture;
+    move_uploaded_file($_FILES['picture']['tmp_name'], '$target');
+
+    $curr_time = date("Y-m-d");
+
+    $dbc = mysqli_connect('localhost', 'root', '', 'PWA') or die('Error connecting to MySQL/MariaDB server.');
+    $query = "INSERT INTO Clanci(Datum, Naslov, KratkiSadrzaj, Tekst, Slika, Sakrivena) VALUES('$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$picture', '$SakrijVijest')";
+    $result = mysqli_query($dbc, $query) or die('Error querying database.');
 
     echo '
 <!DOCTYPE html>
@@ -57,4 +67,6 @@
 </body>
 </html>
 ';
+
+    mysqli_close($dbc);
 ?>

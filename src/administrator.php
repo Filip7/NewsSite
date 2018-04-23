@@ -1,3 +1,17 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: filip
+ * Date: 23.04.18.
+ * Time: 10:31
+ */
+
+$dbc = mysqli_connect('localhost', 'root', '', 'PWA') or die('Error connecting to MySQL/MariaDB server.');
+$query = "SELECT * FROM Clanci";
+$result = mysqli_query($dbc, $query);
+
+echo '
+
 <!DOCTYPE html>
 <html lang="hr">
 <head>
@@ -16,15 +30,24 @@
         </a>
     </figure>
     <ul>
-        <li><a href="index.php" class="active">Home</a></li>
-        <li><a href="onama.html">O nama</a></li>
-        <li><a href="#">Kontakt</a></li>
+        <li><a href="index.php">Povratak na stranicu</a></li>
+        <li><a href="administrator.php " class="active">Administracija</a></li>
     </ul>
 </nav>
 <div id="main_content">
     <main>
+        <h1>Administracija news portala</h1>
+        <br>
+        <br>
+        ';
+        while($row = mysqli_fetch_array($result)){
+            echo '<span>Naslov: '.$row['Naslov'].'  </span>';
+            echo '<span>Datum: '.$row['Datum'].'  </span>';
+            echo '<span>Sakrivena: '.$row['Sakrivena'].'  </span>';
+            echo '<br><br>';
+        }
 
-
+      echo  '
     </main>
 </div>
 <footer class="clear_floating">
@@ -34,3 +57,7 @@
 </footer>
 </body>
 </html>
+
+';
+
+mysqli_close($dbc);
