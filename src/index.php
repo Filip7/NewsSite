@@ -66,7 +66,7 @@ echo '
     <footer class="clear_floating">
         <p>Kreirao: Filip M.</p>
         <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
-        <p id="last"><a href="unos.html">Unos vijesti</a></p>
+        <p id="last"><a href="administrator.php">Administracija</a></p>
     </footer>
 </body>
 </html>

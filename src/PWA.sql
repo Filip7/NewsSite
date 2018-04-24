@@ -16,12 +16,12 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `PWA`
 --
-CREATE DATABASE IF NOT EXISTS `PWA` DEFAULT CHARACTER SET utf8 COLLATE utf8_croatian_ci;
+CREATE DATABASE IF NOT EXISTS `PWA` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
 USE `PWA`;
 
 -- --------------------------------------------------------
@@ -39,7 +39,7 @@ CREATE TABLE `Clanci` (
   `Tekst` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `Slika` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `Sakrivena` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `Clanci`

@@ -36,24 +36,38 @@ echo '
 </nav>
 <div id="main_content">
     <main>
+        <!--Dobra zamisao samo je problem u prikazu obnovljenih clanaka <iframe style="display:none;" name="target"></iframe> -->
         <h1>Administracija news portala</h1>
         <br>
+        <p><a href="unos.html">Unos vijesti</a></p>
         <br>
         ';
+        echo '<ul>';
         while($row = mysqli_fetch_array($result)){
-            echo '<span>Naslov: '.$row['Naslov'].'  </span>';
-            echo '<span>Datum: '.$row['Datum'].'  </span>';
-            echo '<span>Sakrivena: '.$row['Sakrivena'].'  </span>';
-            echo '<br><br>';
+            echo '<li>Naslov: '.$row['Naslov'].'  <ul style="list-style-type: none;">';
+            echo '<li>Datum: '.$row['Datum'].'  </li>';
+            echo '<li>Sakrivena: '.$row['Sakrivena'].'  </li>';
+			echo '<form  name="sakrij" action="sakrij.php" method="post" target="target">
+						<input type="hidden" name="sakrij" value="'.$row['id'].'" />
+						<input type="hidden" name="sakriveno" value="'.$row['Sakrivena'].'" />
+						<input type="submit" value="Sakrij/Prikaži">
+				 </form>
+			';
+			echo '<form  name="izbrisi" action="delete.php" method="post" target="target">
+						<input type="hidden" name="izbrisi" value="'.$row['id'].'" />
+						<input type="submit" value="Izbriši">
+				 </form>
+			';
+			echo '</ul></li>';
         }
-
+        echo '</ul>';
       echo  '
     </main>
 </div>
 <footer class="clear_floating">
     <p>Kreirao: Filip M.</p>
     <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
-    <p id="last"><a href="unos.html">Unos vijesti</a></p>
+    <p id="last"><a href="administrator.php">Administracija</a></p>
 </footer>
 </body>
 </html>

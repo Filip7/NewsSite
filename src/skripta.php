@@ -9,12 +9,14 @@
     $kratkiSadrzaj = $_POST['kratkiSadrzaj'];
     $tekst = $_POST['tekst'];
     $vrstaVijesti = $_POST['vrstaVijesti'];
-    $SakrijVijest = (isset($_POST['sakrijVijest']) ? $_POST['sakrijVijest'] : 0);
+    $SakrijVijest = (isset($_POST['sakrijVijest']) ? 1 : 0);
 
     $picture = $_FILES['picture']['name'];
     $target = '../res/'.$picture;
     move_uploaded_file($_FILES['picture']['tmp_name'], '$target');
 
+	date_default_timezone_set('Europe/Zagreb');
+	
     $curr_time = date("Y-m-d");
 
     $dbc = mysqli_connect('localhost', 'root', '', 'PWA') or die('Error connecting to MySQL/MariaDB server.');
@@ -35,12 +37,12 @@
 <body>
 <nav>
     <figure class="float_left">
-        <a href="index.html">
+        <a href="index.php">
             <img src="../res/circle_logo.png" alt="Ovo je nevidljivi opis jedne slike">
         </a>
     </figure>
     <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="onama.html">O nama</a></li>
         <li><a href="#">Kontakt</a></li>
     </ul>
@@ -62,11 +64,10 @@
         <p>Kreirao: Filip M.</p>
         <p></p>
         <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
-        <p id="last"><a href="unos.html">Unos vijesti</a></p>
+        <p id="last"><a href="administrator.php">Administracija</a></p>
     </footer>
 </body>
 </html>
 ';
 
     mysqli_close($dbc);
-?>
