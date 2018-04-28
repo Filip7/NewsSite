@@ -17,12 +17,13 @@ move_uploaded_file($_FILES['picture']['tmp_name'], '$target');
 
 date_default_timezone_set('Europe/Zagreb');
 
-$curr_time = date("Y-m-d");
+$curr_date = date("Y-m-d");
+$curr_time = date("H:i:s");
 
 define('__APP__', TRUE);
 
 include("../dbconn.php");
-$query = "INSERT INTO Clanci(Datum, Naslov, KratkiSadrzaj, Tekst, Slika, Sakrivena) VALUES('$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$picture', '$SakrijVijest')";
+$query = "INSERT INTO Clanci(Datum, VrijemeIzrade, Naslov, KratkiSadrzaj, Tekst, Slika, Sakrivena) VALUES('$curr_date', '$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$picture', '$SakrijVijest')";
 $result = mysqli_query($dbc, $query) or die('Error querying database.');
 
 echo '

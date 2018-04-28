@@ -9,7 +9,7 @@
 define('__APP__', TRUE);
 
 include("../dbconn.php");
-$query = "SELECT * FROM Clanci ORDER BY Datum DESC";
+$query = "SELECT * FROM Clanci ORDER BY Datum DESC, VrijemeIzrade DESC";
 $result = mysqli_query($dbc, $query);
 
 echo '
@@ -48,17 +48,19 @@ echo '
 <tr>
     <th>Naslov</th>
     <th>Datum</th>
+    <th>Vrijeme</th>
     <th>Akcija</th>
 </tr>
 ';
 while ($row = mysqli_fetch_array($result)) {
-    $color = 'value="Prikazi"';
+    $color = 'value="Prikaži"';
     if ($row["Sakrivena"] == 0) {
         $color = 'value="Sakrij" style="background-color: gray; width: 79px;"';
     }
     echo '<tr>';
-    echo '<td>' . $row['Naslov'] . '</td>';
+    echo '<td><a href="../clanak.php?id='.$row['id'].'" target="_blank">' . $row['Naslov'] . '</a></td>';
     echo '<td>' . $row['Datum'] . ' </td>';
+    echo '<td>'.$row['VrijemeIzrade'].'</td>';
     echo '<td>';
     echo '<div class="float_left" style="padding: 5px;"><form  name="sakrij" action="sakrij.php" method="post">
 						<input type="hidden" name="sakrij" value="' . $row['id'] . '" />

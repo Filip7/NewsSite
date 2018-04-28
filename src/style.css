@@ -1,12 +1,12 @@
-*{
+* {
     font-family: 'Open Sans', sans-serif;
 }
 
-html{
+html {
     width: 100%;
 }
 
-body{
+body {
     /*width: 100%;*/
     min-height: 100%;
     background: url(../res/cream_dust.png) repeat 0 0;
@@ -16,26 +16,26 @@ body{
 }
 
 /*Pomocne klase*/
-.float_left{
+.float_left {
     float: left;
 }
 
-.clear_floating{
+.clear_floating {
     clear: both;
 }
 
-.center{
+.center {
     text-align: center;
 }
 
-.img-spec{
+.img-spec {
     padding: 0;
     margin: 5px;
     box-shadow: 5px 5px 3px #888888;
 }
 
 /*Navbar*/
-nav{
+nav {
     width: 100%;
     position: -webkit-sticky; /* Safari */
     position: sticky;
@@ -43,7 +43,7 @@ nav{
     background-color: #333;
 }
 
-nav ul{
+nav ul {
     width: 75%;
     margin: auto;
     list-style-type: none;
@@ -52,11 +52,11 @@ nav ul{
     background-color: #333;
 }
 
-nav li{
+nav li {
     float: left;
 }
 
-nav li a{
+nav li a {
     display: block;
     color: white;
     text-align: center;
@@ -72,62 +72,72 @@ nav li a:hover {
     background-color: #4CAF50;
 }
 
-figure{
+figure {
     width: 100px;
     margin: auto;
 }
 
 /*Glavni sadrzaj*/
-#main_content{
+#main_content {
     margin: auto;
     width: 95%;
 }
-main{
+
+main {
     margin: auto;
     width: 75%;
 }
 
-article{
+main h1 a{
+    color: black;
+    text-decoration: none;
+}
+
+main h1 a:hover{
+    text-decoration: underline;
+}
+
+article {
     width: 100%;
     height: auto;
     font-size: large;
     letter-spacing: 0.01em;
 }
 
-article p{
+article p {
     text-align: justify;
     text-justify: inter-word;
 }
 
-.article_lead{
+.article_lead {
     font-style: italic;
 }
 
 /*Footer*/
-footer{
+footer {
     width: 100%;
     color: white;
     background-color: #333;
-    position:relative;
-    bottom:0;
+    position: relative;
+    bottom: 0;
 }
 
-footer p{
+footer p {
     padding: 2px;
     text-align: center;
 }
 
-footer a{
+footer a {
     color: #ffffff;
 }
 
-footer #last{
+footer #last {
     margin-bottom: 0;
 }
 
 /*Za formu*/
-.forma{
-    max-width: 350px;
+.forma {
+    max-width: 650px;
     margin: auto;
 }
 
@@ -144,7 +154,7 @@ input[type=submit]:hover {
     background-color: #45a049;
 }
 
-input[type=checkbox]{
+input[type=checkbox] {
     cursor: pointer;
 }
 
@@ -156,7 +166,7 @@ input[type=text], select, textarea {
 }
 
 /*Za administrator.php*/
-#administratorTable{
+#administratorTable {
     border-collapse: collapse;
     width: 100%;
 }
@@ -180,24 +190,37 @@ input[type=text], select, textarea {
     background-color: #f5f5f5;
 }
 
-@media screen and (max-width: 600px){
+#administratorTable a{
+    color: black;
+}
+
+@media screen and (max-width: 600px) {
+    .forma {
+        max-width: 350px;
+    }
+
     nav ul li {
         float: none;
     }
-    nav{
+
+    nav {
         position: relative;
     }
-    nav ul{
+
+    nav ul {
         width: 100%;
     }
-    nav figure{
+
+    nav figure {
         width: 100%;
         text-align: center;
     }
-    main{
+
+    main {
         width: 100%;
     }
-    article img{
+
+    article img {
         width: 100%;
         margin: auto;
     }

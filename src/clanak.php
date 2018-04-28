@@ -2,15 +2,17 @@
 /**
  * Created by PhpStorm.
  * User: filip
- * Date: 23.04.18.
- * Time: 10:31
+ * Date: 28.04.18.
+ * Time: 22:26
  */
+
+$id = $_GET['id'];
 
 define('UPLPATH', '../res/');
 define('__APP__', TRUE);
 
 include("dbconn.php");
-$query = "SELECT * FROM Clanci ORDER BY Datum DESC, VrijemeIzrade DESC";
+$query = "SELECT * FROM Clanci WHERE id='$id'";
 $result = mysqli_query($dbc, $query);
 
 echo '
@@ -32,7 +34,7 @@ echo '
             </a>
         </figure>
         <ul>
-            <li><a href="#" class="active">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="onama.html">O nama</a></li>
             <li><a href="#">Kontakt</a></li>
         </ul>
@@ -46,7 +48,7 @@ while ($row = mysqli_fetch_array($result)) {
         echo '
     <article class="float_left">
             <header>
-                <h1><a href="clanak.php?id='.$row['id'].'">' . $row['Naslov'] . '</a></h1>
+                <h1>' . $row['Naslov'] . '</h1>
                 <span  class="article_lead">' . $row['KratkiSadrzaj'] . '</span>
             </header>';
         if ($row['Slika'] != null) {

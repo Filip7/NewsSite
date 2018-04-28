@@ -10,4 +10,4 @@ $result = mysqli_query($dbc, $query);
 
 mysqli_close($dbc);
 
-echo '<meta http-equiv="refresh" content="0; url=http://localhost/src/administrator.php" />';
+echo '<meta http-equiv="refresh" content="0; url=http://localhost/src/admin/administrator.php" />';
