@@ -7,9 +7,10 @@
  */
 
 define('UPLPATH', '../res/');
+define('__APP__', TRUE);
 
-$dbc = mysqli_connect('localhost', 'root', '', 'PWA') or die('Error connecting to MySQL/MariaDB server.');
-$query = "SELECT * FROM Clanci";
+include("dbconn.php");
+$query = "SELECT * FROM Clanci ORDER BY Datum DESC";
 $result = mysqli_query($dbc, $query);
 
 echo '
@@ -40,20 +41,20 @@ echo '
     <main>
 ';
 
-while($row = mysqli_fetch_array($result)){
-    if($row['Sakrivena'] != 1){
+while ($row = mysqli_fetch_array($result)) {
+    if ($row['Sakrivena'] != 1) {
         echo '
     <article class="float_left">
             <header>
-                <h1>'.$row['Naslov'].'</h1>
-                <span  class="article_lead">'.$row['KratkiSadrzaj'].'</span>
+                <h1>' . $row['Naslov'] . '</h1>
+                <span  class="article_lead">' . $row['KratkiSadrzaj'] . '</span>
             </header>';
-        if($row['Slika'] != null){
-            echo '<img src="'.UPLPATH.$row['Slika'].'" height="85%" width="85%" class="img-spec center"/>';
+        if ($row['Slika'] != null) {
+            echo '<img src="' . UPLPATH . $row['Slika'] . '" height="85%" width="85%" class="img-spec center"/>';
         }
 
         echo '
-            <p>'.$row['Tekst'].'</p>
+            <p>' . $row['Tekst'] . '</p>
      </article>
     ';
     }
@@ -66,7 +67,7 @@ echo '
     <footer class="clear_floating">
         <p>Kreirao: Filip M.</p>
         <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
-        <p id="last"><a href="administrator.php">Administracija</a></p>
+        <p id="last"><a href="admin/administrator.php">Administracija</a></p>
     </footer>
 </body>
 </html>

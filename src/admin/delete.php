@@ -2,7 +2,9 @@
 
 $id = $_POST['izbrisi'];
 
-$dbc = mysqli_connect('localhost', 'root', '', 'PWA') or die('Error connecting to MySQL/MariaDB server.');
+define('__APP__', TRUE);
+
+include("../dbconn.php");
 $query = "DELETE  FROM Clanci WHERE id='$id'";
 $result = mysqli_query($dbc, $query);
 
