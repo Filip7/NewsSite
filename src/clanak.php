@@ -44,23 +44,29 @@ echo '
 ';
 
 while ($row = mysqli_fetch_array($result)) {
-    if ($row['Sakrivena'] != 1) {
-        echo '
+    echo '
     <article class="float_left">
             <header>
-                <h1>' . $row['Naslov'] . '</h1>
-                <span  class="article_lead">' . $row['KratkiSadrzaj'] . '</span>
+                <h1>' . urldecode($row['Naslov']) . '</h1>
+                <span  class="article_lead">' . urldecode($row['KratkiSadrzaj']) . '</span>
             </header>';
-        if ($row['Slika'] != null) {
-            echo '<img src="' . UPLPATH . $row['Slika'] . '" height="85%" width="85%" class="img-spec center"/>';
-        }
-
+    if ($row['Slika'] != null) {
+        echo '<img id="slikaMain" src="' . UPLPATH . urldecode($row['Slika']) . '" height="85%" width="85%" class="img-spec center"/>';
         echo '
-            <p>' . $row['Tekst'] . '</p>
-     </article>
-    ';
+            <div id="myModal" class="modal">
+              <span class="close">&times;</span>
+              <img class="modal-content" id="img01">
+              <div id="caption"></div>
+            </div>
+            ';
     }
 
+    echo '
+            <p>' . urldecode($row['Tekst']) . '</p>
+            <br>
+            <div id="oClanku">Objavljeno: '.$row['Datum'].' u '.$row['VrijemeIzrade'].'</div>
+     </article>
+    ';
 }
 
 echo '
@@ -71,6 +77,7 @@ echo '
         <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
         <p id="last"><a href="admin/administrator.php">Administracija</a></p>
     </footer>
+     <script src="modalSlika.js"></script>
 </body>
 </html>
 ';

@@ -42,23 +42,22 @@ echo '
 ';
 
 while ($row = mysqli_fetch_array($result)) {
-    if ($row['Sakrivena'] != 1) {
+    if (urldecode($row['Sakrivena']) != 1) {
         echo '
     <article class="float_left">
             <header>
-                <h1><a href="clanak.php?id='.$row['id'].'">' . $row['Naslov'] . '</a></h1>
-                <span  class="article_lead">' . $row['KratkiSadrzaj'] . '</span>
+                <h1><a href="clanak.php?id=' . urldecode($row['id']) . '">' . urldecode($row['Naslov']) . '</a></h1>
+                <span  class="article_lead">' . urldecode($row['KratkiSadrzaj']) . '</span>
             </header>';
         if ($row['Slika'] != null) {
-            echo '<img src="' . UPLPATH . $row['Slika'] . '" height="85%" width="85%" class="img-spec center"/>';
+            echo '<img src="' . UPLPATH . urldecode($row['Slika']) . '" height="85%" width="85%" class="img-spec center"/>';
         }
 
         echo '
-            <p>' . $row['Tekst'] . '</p>
+            <p>' . urldecode($row['Tekst']) . '</p>
      </article>
     ';
     }
-
 }
 
 echo '

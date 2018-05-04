@@ -22,9 +22,21 @@ $curr_time = date("H:i:s");
 
 define('__APP__', TRUE);
 
+$naslov = urlencode($naslov);
+$kratkiSadrzaj = urlencode($kratkiSadrzaj);
+$tekst = urlencode($tekst);
+$vrstaVijesti = urlencode($vrstaVijesti);
+$SakrijVijest = urlencode($SakrijVijest);
+
 include("../dbconn.php");
-$query = "INSERT INTO Clanci(Datum, VrijemeIzrade, Naslov, KratkiSadrzaj, Tekst, Slika, Sakrivena) VALUES('$curr_date', '$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$picture', '$SakrijVijest')";
+$query = "INSERT INTO Clanci(Datum, VrijemeIzrade, Naslov, KratkiSadrzaj, Tekst, Kategorija, Slika, Sakrivena) VALUES('$curr_date', '$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$vrstaVijesti', '$picture', '$SakrijVijest')";
 $result = mysqli_query($dbc, $query) or die('Error querying database.');
+
+$naslov = urldecode($naslov);
+$kratkiSadrzaj = urldecode($kratkiSadrzaj);
+$tekst = urldecode($tekst);
+$vrstaVijesti = urldecode($vrstaVijesti);
+$SakrijVijest = urldecode($SakrijVijest);
 
 echo '
 <!DOCTYPE html>

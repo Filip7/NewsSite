@@ -40,7 +40,7 @@ echo '
     <main>
         <h1>Administracija news portala</h1>
         <br>
-        <p><a href="unos.html">Unos vijesti</a></p>
+        <p><a class="button" href="unos.html">Unos vijesti</a></p>
         <br>
         ';
 echo '<table id="administratorTable">';
@@ -58,7 +58,7 @@ while ($row = mysqli_fetch_array($result)) {
         $color = 'value="Sakrij" style="background-color: gray; width: 79px;"';
     }
     echo '<tr>';
-    echo '<td><a href="../clanak.php?id='.$row['id'].'" target="_blank">' . $row['Naslov'] . '</a></td>';
+    echo '<td><a href="../clanak.php?id='.$row['id'].'" target="_blank">' . urldecode($row['Naslov']) . '</a></td>';
     echo '<td>' . $row['Datum'] . ' </td>';
     echo '<td>'.$row['VrijemeIzrade'].'</td>';
     echo '<td>';

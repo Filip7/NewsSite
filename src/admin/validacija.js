@@ -25,6 +25,13 @@ function provjera() {
         slanjeForme = false;
     }
 
+    if (kratkiSadrzaj === "") {
+        kratkiSadrzajElem.style.border = "1px solid red";
+        document.getElementById("kratkiSadrzajPoruka").innerHTML = "Kratki sadrzaj ne smije biti prazan!";
+        slanjeForme = false;
+    }
+
+
     var glavniTekstElem = document.getElementById('glavniTekst');
     var glavniTekst = glavniTekstElem.value;
     if (glavniTekst.length < 10 || glavniTekst.length > 1000) {
