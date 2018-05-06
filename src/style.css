@@ -68,6 +68,10 @@ nav li a:hover {
     background-color: #111;
 }
 
+nav .icon{
+    display: none;
+}
+
 .active {
     background-color: #4CAF50;
 }
@@ -130,7 +134,7 @@ article p {
     font-size: small;
 }
 
-/*Modal primjer sa w3schools*/
+/*Modal primjer sa w3schools za slike*/
 
 #slikaMain{
     border-radius: 5px;
@@ -142,7 +146,7 @@ article p {
     opacity: 0.7;
 }
 
-.modal {
+.modalSlike {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -157,7 +161,7 @@ article p {
 }
 
 /* Modal Content (Image) */
-.modal-content {
+.modal-content-slike {
     margin: auto;
     display: block;
     width: 80%;
@@ -177,7 +181,7 @@ article p {
 }
 
 /* Add Animation - Zoom in the Modal */
-.modal-content, #caption {
+.modal-content-slike, #caption {
     animation-name: zoom;
     animation-duration: 0.6s;
 }
@@ -188,7 +192,7 @@ article p {
 }
 
 /* The Close Button */
-.close {
+.close-image {
     position: absolute;
     top: 15px;
     right: 35px;
@@ -198,7 +202,7 @@ article p {
     transition: 0.3s;
 }
 
-.close:hover, .close:focus {
+.close-image:hover, .close-image:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
@@ -256,6 +260,82 @@ input[type=text], select, textarea {
     resize: vertical;
 }
 
+/* Forma modal */
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.container {
+    padding: 16px;
+}
+
+
 /*Za administrator.php*/
 #administratorTable {
     border-collapse: collapse;
@@ -290,7 +370,7 @@ input[type=text], select, textarea {
         max-width: 350px;
     }
 
-    .modal-content {
+    .modal-content-slike {
         width: 100%;
     }
 
@@ -309,6 +389,11 @@ input[type=text], select, textarea {
     nav figure {
         width: 100%;
         text-align: center;
+    }
+
+    nav .icon{
+        display: block;
+        text-align: end;
     }
 
     main {

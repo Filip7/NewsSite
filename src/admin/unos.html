@@ -25,13 +25,16 @@
           onsubmit="return provjera()">
         <label for="naslov">Naslov vijesti:</label>
         <input id="naslov" type="text" name="naslov"/>
+        <br>
         <span style="color:red" id="naslovPoruka"></span>
         <br>
-        <textarea name="kratkiSadrzaj" id="kratkiSadrzaj" rows="5" cols="35"
+        <textarea name="kratkiSadrzaj" id="kratkiSadrzaj" style="width: 95%; height: 100px;"
                   placeholder="Kratki sadžaj vijesti"></textarea>
+        <br>
         <span style="color:red" id="kratkiSadrzajPoruka"></span>
         <br>
-        <textarea name="tekst" id="glavniTekst" rows="10" cols="35" placeholder="Tekst nove vijesti."></textarea>
+        <textarea name="tekst" id="glavniTekst" style="width: 95%; height: 300px;" placeholder="Tekst nove vijesti."></textarea>
+        <br>
         <span style="color:red" id="glavniTekstPoruka"></span>
         <br>
         <input type="hidden" name="MAX_FILE_SIZE" value="1048576"/>

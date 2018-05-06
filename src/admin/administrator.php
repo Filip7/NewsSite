@@ -13,7 +13,6 @@ $query = "SELECT * FROM Clanci ORDER BY Datum DESC, VrijemeIzrade DESC";
 $result = mysqli_query($dbc, $query);
 
 echo '
-
 <!DOCTYPE html>
 <html lang="hr">
 <head>
@@ -38,10 +37,52 @@ echo '
 </nav>
 <div id="main_content">
     <main>
-        <h1>Administracija news portala</h1>
+        <h1 class="center">Administracija news portala</h1>
         <br>
-        <p><a class="button" href="unos.html">Unos vijesti</a></p>
+        <p><a class="button float_left" href="unos.html">Unos vijesti</a></p>
+        <button onclick="document.getElementById(\'id01\').style.display=\'block\'" class="float_left">Brzi unos vijesti</button>
+        <span class="clear_floating"></span>
+        
+        <div id="id01" class="modal">
+        <span onclick="document.getElementById(\'id01\').style.display=\'none\'"
+            class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form enctype="multipart/form-data" name="unos" action="skripta.php" method="post" class="forma modal-content animate" onsubmit="return provjera()">
+    <div class="container">
+      <label for="naslov">Naslov vijesti:</label>
+        <input id="naslov" type="text" name="naslov"/>
         <br>
+        <span style="color:red" id="naslovPoruka"></span>
+        <br>
+        <textarea name="kratkiSadrzaj" id="kratkiSadrzaj" style="width: 95%; height: 100px;"
+                  placeholder="Kratki sadžaj vijesti"></textarea>
+        <br>
+        <span style="color:red" id="kratkiSadrzajPoruka"></span>
+        <br>
+        <textarea name="tekst" id="glavniTekst" style="width: 95%; height: 200px;" placeholder="Tekst nove vijesti."></textarea>
+        <br>
+        <span style="color:red" id="glavniTekstPoruka"></span>
+        <br>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1048576"/>
+        <label for="picture">Priloži sliku:</label>
+        <input type="file" id="picture" name="picture"/>
+        <br>
+        <br>
+        <select name="vrstaVijesti">
+            <option value="Putovanja">Putovanja</option>
+            <option value="ClickBait">ClickBait</option>
+        </select>
+        <input type="checkbox" id="checkBoxSakrij" name="sakrijVijest" value="sakrijVijest" title="Sakrij Vijest"/>Sakrij
+        Vijest
+        <input id="gumb" type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+<br>
         ';
 echo '<table id="administratorTable">';
 echo '
@@ -86,6 +127,18 @@ echo '
     <p id="last"><a href="administrator.php">Administracija</a></p>
 </footer>
 </body>
+<script>
+        // Get the modal
+        var modal = document.getElementById(\'id01\');
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script> 
+    <script src="validacija.js"></script>
 </html>
 
 ';

@@ -25,18 +25,11 @@ echo '
     <title>Vijesti 747</title>
 </head>
 <body>
-    <nav>
-        <figure class="float_left">
-            <a href="index.php">
-                <img src="../res/circle_logo.png" alt="Ovo je nevidljivi opis jedne slike">
-            </a>
-        </figure>
-        <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="onama.html">O nama</a></li>
-            <li><a href="#">Kontakt</a></li>
-        </ul>
-    </nav>
+';
+
+include("header.php");
+
+echo '
     <div id="main_content">
     <main>
 ';
@@ -68,6 +61,17 @@ echo '
         <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
         <p id="last"><a href="admin/administrator.php">Administracija</a></p>
     </footer>
+    
+    <script>
+    function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+} 
+    </script>
 </body>
 </html>
 ';

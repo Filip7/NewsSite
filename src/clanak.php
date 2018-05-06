@@ -53,9 +53,9 @@ while ($row = mysqli_fetch_array($result)) {
     if ($row['Slika'] != null) {
         echo '<img id="slikaMain" src="' . UPLPATH . urldecode($row['Slika']) . '" height="85%" width="85%" class="img-spec center"/>';
         echo '
-            <div id="myModal" class="modal">
-              <span class="close">&times;</span>
-              <img class="modal-content" id="img01">
+            <div id="myModal" class="modalSlike">
+              <span class="close-image">&times;</span>
+              <img class="modal-content-slike" id="img01">
               <div id="caption"></div>
             </div>
             ';
@@ -64,7 +64,7 @@ while ($row = mysqli_fetch_array($result)) {
     echo '
             <p>' . urldecode($row['Tekst']) . '</p>
             <br>
-            <div id="oClanku">Objavljeno: '.$row['Datum'].' u '.$row['VrijemeIzrade'].'</div>
+            <div id="oClanku">Objavljeno: ' . $row['Datum'] . ' u ' . $row['VrijemeIzrade'] . '</div>
      </article>
     ';
 }
@@ -77,7 +77,7 @@ echo '
         <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
         <p id="last"><a href="admin/administrator.php">Administracija</a></p>
     </footer>
-     <script src="modalSlika.js"></script>
+    <script src="modalSlika.js"></script>
 </body>
 </html>
 ';

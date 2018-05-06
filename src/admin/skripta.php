@@ -12,8 +12,8 @@ $vrstaVijesti = $_POST['vrstaVijesti'];
 $SakrijVijest = (isset($_POST['sakrijVijest']) ? 1 : 0);
 
 $picture = $_FILES['picture']['name'];
-$target = '../res/' . $picture;
-move_uploaded_file($_FILES['picture']['tmp_name'], '$target');
+$target = '../../res/'.$picture;
+move_uploaded_file($_FILES['picture']['tmp_name'], $target);
 
 date_default_timezone_set('Europe/Zagreb');
 
@@ -27,6 +27,7 @@ $kratkiSadrzaj = urlencode($kratkiSadrzaj);
 $tekst = urlencode($tekst);
 $vrstaVijesti = urlencode($vrstaVijesti);
 $SakrijVijest = urlencode($SakrijVijest);
+$picture= urlencode($picture);
 
 include("../dbconn.php");
 $query = "INSERT INTO Clanci(Datum, VrijemeIzrade, Naslov, KratkiSadrzaj, Tekst, Kategorija, Slika, Sakrivena) VALUES('$curr_date', '$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$vrstaVijesti', '$picture', '$SakrijVijest')";
@@ -69,6 +70,11 @@ echo '
                 <h1>' . $naslov . '</h1>
                 <span  class="article_lead">' . $kratkiSadrzaj . '</span>
             </header>
+            ';
+if($picture != null){
+    echo  '<img id="slikaMain" src="' .$target. '" height="85%" width="85%" class="center"/>';
+}
+echo '
             <p>
                 ' . $tekst . '
             </p>
