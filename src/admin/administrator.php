@@ -9,6 +9,28 @@
 define('__APP__', TRUE);
 
 include("../dbconn.php");
+
+if(isset($_POST['login'])) {
+    $login = $_POST['login'];
+    if ($login == "login") {
+        $username = $_POST['uname'];
+        $password = md5($_POST['psw']);
+        $query = "SELECT * FROM Users WHERE Users.korisnickoIme='$username' AND Users.lozinka='$password'";
+        $result = mysqli_query($dbc, $query);
+        $row = mysqli_fetch_array($result);
+        if (mysqli_num_rows($result) > 0) {
+            echo('Uspjesan login ' . $username);
+            if ($row['level'] < 2) {
+                echo '<br>';
+                echo($username . ', nemate dovoljno prava za pristup ovoj stranici');
+                exit();
+            }
+        } else {
+            echo('Korisnik ' . $username . ' ne postoji. Registirirajte se <a href="../registracija.html">ovdje</a>');
+            exit();
+        }
+    }
+}
 $query = "SELECT * FROM Clanci ORDER BY Datum DESC, VrijemeIzrade DESC";
 $result = mysqli_query($dbc, $query);
 
@@ -45,7 +67,7 @@ echo '
         
         <div id="id01" class="modal">
         <span onclick="document.getElementById(\'id01\').style.display=\'none\'"
-            class="close" title="Close Modal">&times;</span>
+            class="close" title="Zatvori brzi unos vijesti">&times;</span>
 
   <!-- Modal Content -->
   <form enctype="multipart/form-data" name="unos" action="skripta.php" method="post" class="forma modal-content animate" onsubmit="return provjera()">

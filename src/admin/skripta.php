@@ -30,7 +30,9 @@ $SakrijVijest = urlencode($SakrijVijest);
 $picture= urlencode($picture);
 
 include("../dbconn.php");
-$query = "INSERT INTO Clanci(Datum, VrijemeIzrade, Naslov, KratkiSadrzaj, Tekst, Kategorija, Slika, Sakrivena) VALUES('$curr_date', '$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$vrstaVijesti', '$picture', '$SakrijVijest')";
+$query = "INSERT INTO Clanci(Datum, VrijemeIzrade, Naslov, KratkiSadrzaj, Tekst, Kategorija, Slika, Sakrivena) 
+          VALUES('$curr_date', '$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$vrstaVijesti', '$picture',
+                 '$SakrijVijest')";
 $result = mysqli_query($dbc, $query) or die('Error querying database.');
 
 $naslov = urldecode($naslov);

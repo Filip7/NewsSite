@@ -43,7 +43,7 @@ while ($row = mysqli_fetch_array($result)) {
                 <span  class="article_lead">' . urldecode($row['KratkiSadrzaj']) . '</span>
             </header>';
         if ($row['Slika'] != null) {
-            echo '<img src="' . UPLPATH . urldecode($row['Slika']) . '" height="85%" width="85%" class="img-spec center"/>';
+            echo '<img src="' . UPLPATH . urldecode($row['Slika']) . '"  class="img-spec center"/>';
         }
 
         echo '

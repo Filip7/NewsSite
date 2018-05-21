@@ -1,10 +1,10 @@
 console.log("Izvrsavanje validacije");
 
 function provjera() {
-    var slanjeForme = true;
+    let slanjeForme = true;
 
-    var naslovElem = document.getElementById("naslov");
-    var naslov = naslovElem.value;
+    let naslovElem = document.getElementById("naslov");
+    let naslov = naslovElem.value;
     if (naslov.length < 5 || naslov.length > 30) {
         naslovElem.style.border = "1px solid red";
         document.getElementById("naslovPoruka").innerHTML = "Naslov mora imati 5 do 30 znakova!";
@@ -17,8 +17,8 @@ function provjera() {
         slanjeForme = false;
     }
 
-    var kratkiSadrzajElem = document.getElementById('kratkiSadrzaj');
-    var kratkiSadrzaj = kratkiSadrzajElem.value;
+    let kratkiSadrzajElem = document.getElementById('kratkiSadrzaj');
+    let kratkiSadrzaj = kratkiSadrzajElem.value;
     if (kratkiSadrzaj.length < 10 || kratkiSadrzaj.length > 100) {
         kratkiSadrzajElem.style.border = "1px solid red";
         document.getElementById("kratkiSadrzajPoruka").innerHTML = "Kratki sadrzaj mora imati 10 do 100 znakova!";
@@ -32,8 +32,8 @@ function provjera() {
     }
 
 
-    var glavniTekstElem = document.getElementById('glavniTekst');
-    var glavniTekst = glavniTekstElem.value;
+    let glavniTekstElem = document.getElementById('glavniTekst');
+    let glavniTekst = glavniTekstElem.value;
     if (glavniTekst.length < 10 || glavniTekst.length > 1000) {
         glavniTekstElem.style.border = "1px solid red";
         document.getElementById('glavniTekstPoruka').innerHTML = "Tekst mora imati 10 do 1000 znakova!";
@@ -47,7 +47,7 @@ function provjera() {
     }
 
     if (document.getElementById("checkBoxSakrij").checked === true) {
-        var upit = confirm("Jeste li sigurni da zelite sakriti vijest?");
+        let upit = confirm("Jeste li sigurni da zelite sakriti vijest?");
         if (upit === false) {
             slanjeForme = false;
         }

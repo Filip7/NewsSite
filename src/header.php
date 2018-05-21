@@ -18,6 +18,7 @@ echo '
             <li><a href="#" class="active">Home</a></li>
             <li><a href="onama.html">O nama</a></li>
             <li><a href="#">Kontakt</a></li>
+            <li><a href="login.html">Login</a></li>
         </ul>
     </nav>
 ';

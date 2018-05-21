@@ -31,6 +31,8 @@ body {
 .img-spec {
     padding: 0;
     margin: 5px;
+    max-width: 50%;
+    height: auto;
     box-shadow: 5px 5px 3px #888888;
 }
 
@@ -260,6 +262,27 @@ input[type=text], select, textarea {
     resize: vertical;
 }
 
+/* Forma login */
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
 /* Forma modal */
 
 .modal {
@@ -370,6 +393,10 @@ button {
         max-width: 350px;
     }
 
+    .img-spec{
+        max-width: 90%;
+    }
+
     .modal-content-slike {
         width: 100%;
     }
@@ -397,6 +424,11 @@ button {
     }
 
     main {
+        width: 100%;
+    }
+
+    article{
+        margin: 0 auto;
         width: 100%;
     }
 
