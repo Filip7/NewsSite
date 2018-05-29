@@ -6,6 +6,10 @@
  * Time: 22:26
  */
 
+session_start();
+
+// Sometimes life gives you lemons, and you say that's so cliche
+
 $id = $_GET['id'];
 
 define('UPLPATH', '../res/');
@@ -15,30 +19,9 @@ include("dbconn.php");
 $query = "SELECT * FROM Clanci WHERE id='$id'";
 $result = mysqli_query($dbc, $query);
 
+include("header.php");
+
 echo '
-<!DOCTYPE html>
-<html lang="hr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="style.css" />
-    <link rel="icon" href="../res/circle_logo_fav.png" type="image/gif" sizes="16x16">
-    <title>Vijesti 747</title>
-</head>
-<body>
-    <nav>
-        <figure class="float_left">
-            <a href="index.php">
-                <img src="../res/circle_logo.png" alt="Ovo je nevidljivi opis jedne slike">
-            </a>
-        </figure>
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="onama.html">O nama</a></li>
-            <li><a href="#">Kontakt</a></li>
-        </ul>
-    </nav>
     <div id="main_content">
     <main>
 ';
@@ -61,10 +44,15 @@ while ($row = mysqli_fetch_array($result)) {
             ';
     }
 
+    $idUser = $row['idUser'];
+    $query2 = "SELECT * FROM Users WHERE id='$idUser'";
+    $result2 = mysqli_query($dbc, $query2);
+    $row2 = mysqli_fetch_array($result2);
+
     echo '
             <p>' . urldecode($row['Tekst']) . '</p>
             <br>
-            <div id="oClanku">Objavljeno: ' . $row['Datum'] . ' u ' . $row['VrijemeIzrade'] . '</div>
+            <div id="oClanku">Objavljeno: ' . $row['Datum'] . ' u ' . $row['VrijemeIzrade'] . ' Autor: '. $row2['korisnickoIme'].'</div>
      </article>
     ';
 }
@@ -72,11 +60,9 @@ while ($row = mysqli_fetch_array($result)) {
 echo '
  </main>
     </div>
-    <footer class="clear_floating">
-        <p>Kreirao: Filip M.</p>
-        <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
-        <p id="last"><a href="admin/administrator.php">Administracija</a></p>
-    </footer>
+    ';
+include("footer.php");
+echo '
     <script src="modalSlika.js"></script>
 </body>
 </html>

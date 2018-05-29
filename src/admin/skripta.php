@@ -10,6 +10,7 @@ $kratkiSadrzaj = $_POST['kratkiSadrzaj'];
 $tekst = $_POST['tekst'];
 $vrstaVijesti = $_POST['vrstaVijesti'];
 $SakrijVijest = (isset($_POST['sakrijVijest']) ? 1 : 0);
+$Autor = $_SESSION['id'];
 
 $picture = $_FILES['picture']['name'];
 $target = '../../res/'.$picture;
@@ -30,9 +31,9 @@ $SakrijVijest = urlencode($SakrijVijest);
 $picture= urlencode($picture);
 
 include("../dbconn.php");
-$query = "INSERT INTO Clanci(Datum, VrijemeIzrade, Naslov, KratkiSadrzaj, Tekst, Kategorija, Slika, Sakrivena) 
+$query = "INSERT INTO Clanci(Datum, VrijemeIzrade, Naslov, KratkiSadrzaj, Tekst, Kategorija, Slika, Sakrivena, idUser) 
           VALUES('$curr_date', '$curr_time', '$naslov', '$kratkiSadrzaj', '$tekst', '$vrstaVijesti', '$picture',
-                 '$SakrijVijest')";
+                 '$SakrijVijest', '$Autor')";
 $result = mysqli_query($dbc, $query) or die('Error querying database.');
 
 $naslov = urldecode($naslov);
@@ -61,7 +62,7 @@ echo '
     </figure>
     <ul>
         <li><a href="../index.php">Home</a></li>
-        <li><a href="../onama.html">O nama</a></li>
+        <li><a href="../onama.php">O nama</a></li>
         <li><a href="#">Kontakt</a></li>
     </ul>
 </nav>

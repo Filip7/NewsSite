@@ -8,6 +8,8 @@
 
 define('__APP__', TRUE);
 
+session_start();
+
 include("../dbconn.php");
 
 if(isset($_POST['login'])) {
@@ -20,9 +22,14 @@ if(isset($_POST['login'])) {
         $row = mysqli_fetch_array($result);
         if (mysqli_num_rows($result) > 0) {
             echo('Uspjesan login ' . $username);
+            $_SESSION['username'] = $username;
+            $_SESSION['user']['valid'] = "true";
+            $_SESSION['accessLevel'] = $row['level'];
+            $_SESSION['id'] = $row['id'];
             if ($row['level'] < 2) {
-                echo '<br>';
-                echo($username . ', nemate dovoljno prava za pristup ovoj stranici');
+                $Poruka = $username . ', nemate dovoljno prava za pristup ovoj stranici';
+                $id = "";
+                include("template.php");
                 exit();
             }
         } else {
@@ -34,7 +41,8 @@ if(isset($_POST['login'])) {
 $query = "SELECT * FROM Clanci ORDER BY Datum DESC, VrijemeIzrade DESC";
 $result = mysqli_query($dbc, $query);
 
-echo '
+if(isset($_SESSION['accessLevel']) &&  $_SESSION['accessLevel'] >= 2 ) {
+    echo '
 <!DOCTYPE html>
 <html lang="hr">
 <head>
@@ -46,17 +54,12 @@ echo '
     <title>Vijesti 747</title>
 </head>
 <body>
-<nav>
-    <figure class="float_left">
-        <a href="../index.php">
-            <img src="../../res/circle_logo.png" alt="Ovo je nevidljivi opis jedne slike">
-        </a>
-    </figure>
-    <ul>
-        <li><a href="../index.php">Povratak na stranicu</a></li>
-        <li><a href="administrator.php " class="active">Administracija</a></li>
-    </ul>
-</nav>
+';
+
+    $id = "admin";
+    include("../header.php");
+
+    echo '
 <div id="main_content">
     <main>
         <h1 class="center">Administracija news portala</h1>
@@ -106,8 +109,8 @@ echo '
 </div>
 <br>
         ';
-echo '<table id="administratorTable">';
-echo '
+    echo '<table id="administratorTable">';
+    echo '
 <tr>
     <th>Naslov</th>
     <th>Datum</th>
@@ -115,43 +118,41 @@ echo '
     <th>Akcija</th>
 </tr>
 ';
-while ($row = mysqli_fetch_array($result)) {
-    $color = 'value="Prikaži"';
-    if ($row["Sakrivena"] == 0) {
-        $color = 'value="Sakrij" style="background-color: gray; width: 79px;"';
-    }
-    echo '<tr>';
-    echo '<td><a href="../clanak.php?id='.$row['id'].'" target="_blank">' . urldecode($row['Naslov']) . '</a></td>';
-    echo '<td>' . $row['Datum'] . ' </td>';
-    echo '<td>'.$row['VrijemeIzrade'].'</td>';
-    echo '<td>';
-    echo '<div class="float_left" style="padding: 5px;"><form  name="sakrij" action="sakrij.php" method="post">
+    while ($row = mysqli_fetch_array($result)) {
+        $color = 'value="Prikaži"';
+        if ($row["Sakrivena"] == 0) {
+            $color = 'value="Sakrij" style="background-color: gray; width: 79px;"';
+        }
+        echo '<tr>';
+        echo '<td><a href="../clanak.php?id=' . $row['id'] . '" target="_blank">' . urldecode($row['Naslov']) . '</a></td>';
+        echo '<td>' . $row['Datum'] . ' </td>';
+        echo '<td>' . $row['VrijemeIzrade'] . '</td>';
+        echo '<td>';
+        echo '<div class="float_left" style="padding: 5px;"><form  name="sakrij" action="sakrij.php" method="post">
 						<input type="hidden" name="sakrij" value="' . $row['id'] . '" />
 						<input type="hidden" name="sakriveno" value="' . $row['Sakrivena'] . '" />
 						<input type="submit"  ' . $color . '>
 				 </form></div>
 			';
-    echo '<div class="float_left" style="padding: 5px;"><form  name="izbrisi" action="delete.php" method="post">
+        echo '<div class="float_left" style="padding: 5px;"><form  name="izbrisi" action="delete.php" method="post">
 						<input type="hidden" name="izbrisi" value="' . $row['id'] . '" />
 						<input type="submit" value="Izbriši" style="background-color: red;">
 				 </form></div>
 			';
 
-    echo '</td></tr>';
-}
-echo '</table>';
-echo '
+        echo '</td></tr>';
+    }
+    echo '</table>';
+    echo '
     </main>
 </div>
-<footer class="clear_floating">
-    <p>Kreirao: Filip M.</p>
-    <p>Kontakt: <a href="mailto:fmilkovic@tvz.hr?Subject=Kontakt%20sa%20weba" target="_top">fmilkovic@tvz.hr</a></p>
-    <p id="last"><a href="administrator.php">Administracija</a></p>
-</footer>
+';
+    include("../footer.php");
+    echo '
 </body>
 <script>
         // Get the modal
-        var modal = document.getElementById(\'id01\');
+        let modal = document.getElementById(\'id01\');
         
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
@@ -164,5 +165,11 @@ echo '
 </html>
 
 ';
-
+}
+else{
+    $Poruka = 'Nemate dovoljno prava za pristup ovoj stranici';
+    $id = "";
+    include("template.php");
+    exit();
+}
 mysqli_close($dbc);
