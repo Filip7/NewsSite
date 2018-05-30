@@ -5,6 +5,9 @@
  * Date: 24.03.18.
  * Time: 15:19
  */
+
+session_start();
+
 $naslov = $_POST['naslov'];
 $kratkiSadrzaj = $_POST['kratkiSadrzaj'];
 $tekst = $_POST['tekst'];

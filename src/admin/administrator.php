@@ -115,6 +115,7 @@ if(isset($_SESSION['accessLevel']) &&  $_SESSION['accessLevel'] >= 2 ) {
     <th>Naslov</th>
     <th>Datum</th>
     <th>Vrijeme</th>
+    <th>Autor</th>
     <th>Akcija</th>
 </tr>
 ';
@@ -123,10 +124,17 @@ if(isset($_SESSION['accessLevel']) &&  $_SESSION['accessLevel'] >= 2 ) {
         if ($row["Sakrivena"] == 0) {
             $color = 'value="Sakrij" style="background-color: gray; width: 79px;"';
         }
+
+        $idUser = $row['idUser'];
+        $query2 = "SELECT * FROM Users WHERE id='$idUser'";
+        $result2 = mysqli_query($dbc, $query2);
+        $row2 = mysqli_fetch_array($result2);
+
         echo '<tr>';
         echo '<td><a href="../clanak.php?id=' . $row['id'] . '" target="_blank">' . urldecode($row['Naslov']) . '</a></td>';
         echo '<td>' . $row['Datum'] . ' </td>';
         echo '<td>' . $row['VrijemeIzrade'] . '</td>';
+        echo '<td><a href="../autor.php?autorId='. $idUser .'">' . $row2['korisnickoIme'] . '</a></td>';
         echo '<td>';
         echo '<div class="float_left" style="padding: 5px;"><form  name="sakrij" action="sakrij.php" method="post">
 						<input type="hidden" name="sakrij" value="' . $row['id'] . '" />

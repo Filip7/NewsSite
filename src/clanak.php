@@ -52,7 +52,7 @@ while ($row = mysqli_fetch_array($result)) {
     echo '
             <p>' . urldecode($row['Tekst']) . '</p>
             <br>
-            <div id="oClanku">Objavljeno: ' . $row['Datum'] . ' u ' . $row['VrijemeIzrade'] . ' Autor: '. $row2['korisnickoIme'].'</div>
+            <div id="oClanku">Objavljeno: ' . $row['Datum'] . ' u ' . $row['VrijemeIzrade'] . ' Autor: <a href="autor.php?autorId='. $idUser .'">'. $row2['korisnickoIme'].'</a></div>
      </article>
     ';
 }

@@ -82,7 +82,12 @@ else if($_SESSION['user']['valid'] == "true"){
     if($_SESSION['accessLevel'] >= 2 && $id != "admin"){
         echo '<li><a href="admin/administrator.php">Administracija</a></li>';
     }
-    echo '<li><a href="logout.php">Logout</a></li>';
+    if($id == "admin"){
+        echo '<li><a href="../logout.php">Logout</a></li>';
+    }
+    else{
+        echo '<li><a href="logout.php">Logout</a></li>';
+    }
 }
 echo '
         </ul>
