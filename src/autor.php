@@ -26,14 +26,15 @@ include("header.php");
 
 echo '
 <main>
-    <h2>'. $row2['korisnickoIme'] .'</h2>
+    <h2>Autor '. $row2['korisnickoIme'] .'</h2>
+    <hr>
     <h3>Članci od autora: </h3> ';
 
     while ($row = mysqli_fetch_array($result)) {
         echo '
     <article class="float_left">
             <header>
-                <h1><a href="clanak.php?id=' . urldecode($row['id']) . '" style="text-decoration: underline;">' . urldecode($row['Naslov']) . '</a></h1>
+                <h4><a href="clanak.php?id=' . urldecode($row['id']) . '" style="text-decoration: underline;">' . urldecode($row['Naslov']) . '</a></h4>
                 <span  class="article_lead">' . urldecode($row['KratkiSadrzaj']) . '</span>
             </header>';
     }

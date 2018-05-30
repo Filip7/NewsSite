@@ -64,23 +64,47 @@ nav li a {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+    border-bottom: 5px solid transparent;
 }
 
 nav li a:hover {
-    background-color: #111;
-}
-
-nav .icon{
-    display: none;
+    /*background-color: #111;*/
+    border-bottom: 5px solid #4CAF50;
 }
 
 .active {
-    background-color: #4CAF50;
+    /*background-color: #4CAF50;*/
+    border-bottom: 5px solid #4CAF50;
+}
+
+nav .icon{
+display: none;
 }
 
 figure {
     width: 100px;
     margin: auto;
+}
+
+.alert {
+    padding: 20px;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
 }
 
 /*Glavni sadrzaj*/
@@ -101,6 +125,11 @@ main h1 a{
 
 main h1 a:hover{
     text-decoration: underline;
+}
+
+main h4 a{
+    color: black;
+    text-decoration: none;
 }
 
 article {
@@ -411,6 +440,22 @@ button {
 
     nav ul {
         width: 100%;
+    }
+
+    nav li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    nav li a:hover {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #4CAF50;
     }
 
     nav figure {

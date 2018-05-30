@@ -23,7 +23,13 @@ if(isset($_POST['login'])) {
         $result2 = mysqli_query($dbc, $query2);
         $row = mysqli_fetch_array($result);
         if (mysqli_num_rows($result) > 0) {
-            echo('Uspjesan login ' . $username);
+           echo '
+           <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> 
+                <strong>Uspjeh!</strong> Uspješan login '. $username .'
+            </div>
+           ';
+
             $_SESSION['username'] = $username;
             $_SESSION['user']['valid'] = "true";
             $_SESSION['accessLevel'] = $row['level'];
@@ -119,7 +125,7 @@ if(isset($_SESSION['accessLevel']) &&  $_SESSION['accessLevel'] >= 2 ) {
 </div>
 <br>
         ';
-    echo '<table id="administratorTable">';
+    echo '<div class="clear_floating" style="overflow-x:auto;"><table id="administratorTable">';
     echo '
 <tr>
     <th>Naslov</th>
@@ -160,7 +166,7 @@ if(isset($_SESSION['accessLevel']) &&  $_SESSION['accessLevel'] >= 2 ) {
 
         echo '</td></tr>';
     }
-    echo '</table>';
+    echo '</table></div>';
     echo '
     </main>
 </div>
