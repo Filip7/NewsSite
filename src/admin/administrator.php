@@ -19,6 +19,8 @@ if(isset($_POST['login'])) {
         $password = md5($_POST['psw']);
         $query = "SELECT * FROM Users WHERE Users.korisnickoIme='$username' AND Users.lozinka='$password'";
         $result = mysqli_query($dbc, $query);
+        $query2 = "SELECT * FROM Users WHERE Users.korisnickoIme='$username'";
+        $result2 = mysqli_query($dbc, $query2);
         $row = mysqli_fetch_array($result);
         if (mysqli_num_rows($result) > 0) {
             echo('Uspjesan login ' . $username);
@@ -32,8 +34,16 @@ if(isset($_POST['login'])) {
                 include("template.php");
                 exit();
             }
-        } else {
-            echo('Korisnik ' . $username . ' ne postoji. Registirirajte se <a href="../registracija.html">ovdje</a>');
+        }else if(mysqli_num_rows($result2) > 0){
+            $Poruka = 'Kriva šifra! Ponovite login <a href="../login.html">ovdje</a>';
+            $id = "";
+            include("template.php");
+            exit();
+        }
+        else {
+            $Poruka = 'Korisnik ' . $username . ' ne postoji. Registirirajte se <a href="../registracija.html">ovdje</a>';
+            $id = "";
+            include("template.php");
             exit();
         }
     }

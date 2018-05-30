@@ -15,8 +15,22 @@ $email = urlencode($_POST['email']);
 $lozinka1 = $_POST['psw'];
 $lozinka2 = $_POST['psw-repeat'];
 
+$query = "SELECT * FROM Users WHERE korisnickoIme ='$korisnickoIme'";
+$result = mysqli_query($dbc, $query);
+
+if(mysqli_num_rows($result) > 0){
+    $Poruka = 'Korisnik ' . $korisnickoIme . ' već postoji. Povratak na registraciju za 5 sekundi 
+                <meta http-equiv="refresh" content="5; url=../registracija.html"/> <a href="../registracija.html" class="button">Registracija</a>';
+    $id = "";
+    include("template.php");
+    exit();
+}
+
 if($lozinka1 != $lozinka2){
-    echo 'Lozinke nisu iste!';
+    $Poruka = 'Lozinke nisu iste. Povratak na registraciju za 5 sekundi 
+                <meta http-equiv="refresh" content="5; url=../registracija.html"/> <a href="../registracija.html" class="button">Registracija</a>';
+    $id = "";
+    include("template.php");
     exit();
 } else{
     $lozinka = md5($lozinka1);
