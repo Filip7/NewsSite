@@ -50,14 +50,21 @@ if($id == "index"){
     echo '
             <li><a href="#" class="active">Home</a></li>
             <li><a href="onama.php">O nama</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="kontakt.php">Kontakt</a></li>
     ';
 }
 else if($id == "onama"){
     echo '
             <li><a href="index.php">Home</a></li>
             <li><a href="#" class="active">O nama</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="kontakt.php">Kontakt</a></li>
+    ';
+}
+else if($id == "kontakt"){
+    echo '
+            <li><a href="index.php">Home</a></li>
+            <li><a href="onama.php">O nama</a></li>
+            <li><a href="#" class="active">Kontakt</a></li>
     ';
 }
 else if($id == "admin"){
@@ -70,7 +77,7 @@ else{
     echo '
             <li><a href="index.php">Home</a></li>
             <li><a href="onama.php">O nama</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="kontakt.php">Kontakt</a></li>
     ';
 }
 

@@ -66,7 +66,7 @@ echo '
     <ul>
         <li><a href="../index.php">Home</a></li>
         <li><a href="../onama.php">O nama</a></li>
-        <li><a href="#">Kontakt</a></li>
+        <li><a href="../kontakt.php">Kontakt</a></li>
     </ul>
 </nav>
 <div id="main_content">
