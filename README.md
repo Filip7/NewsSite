@@ -1,3 +1,6 @@
+#MOVED TO GITLAB https://gitlab.com/FilipM/NewsSite
+
+
 ![Logo News 747](https://raw.githubusercontent.com/filipm7/NewsSite/master/res/circle_logo.png)
 
 # News 747
